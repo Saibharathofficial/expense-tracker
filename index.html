@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111827">
+  <link rel="manifest" href="manifest.json">
+  <title>Money Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div>
+        <p class="eyebrow">COLLEGE MONEY</p>
+        <h1>Money Tracker</h1>
+      </div>
+      <button id="installBtn" class="icon-btn hidden" aria-label="Install app">＋</button>
+    </header>
+
+    <section class="balance-card">
+      <span>Money left</span>
+      <strong id="balance">₹0</strong>
+      <small id="spentSummary">₹0 spent</small>
+    </section>
+
+    <section class="quick-entry">
+      <div class="tabs">
+        <button class="tab active" data-mode="expense">Spent</button>
+        <button class="tab" data-mode="income">Add money</button>
+      </div>
+
+      <label for="amount">Amount</label>
+      <div class="amount-row">
+        <span>₹</span>
+        <input id="amount" type="number" inputmode="decimal" min="0" step="1"
+               placeholder="0" autocomplete="off">
+        <button id="saveBtn" class="save-btn">Save</button>
+      </div>
+      <p id="entryHint" class="hint">Enter what you just spent.</p>
+      <button id="undoBtn" class="undo hidden">↶ Undo last expense</button>
+    </section>
+
+    <section class="chart-section">
+      <div class="section-heading">
+        <div>
+          <h2>Expenses</h2>
+          <p>Daily spending</p>
+        </div>
+        <select id="range">
+          <option value="7">7 days</option>
+          <option value="14">14 days</option>
+          <option value="30" selected>30 days</option>
+        </select>
+      </div>
+      <div class="chart-wrap"><canvas id="expenseChart"></canvas></div>
+    </section>
+
+    <section class="people-section">
+      <div class="section-heading">
+        <div>
+          <h2>People</h2>
+          <p>Money you owe or should receive</p>
+        </div>
+        <button id="addPersonBtn" class="text-btn">+ Add person</button>
+      </div>
+
+      <div id="personForm" class="person-form hidden">
+        <input id="personName" type="text" placeholder="Person's name" autocomplete="off">
+        <button id="savePersonBtn" class="save-btn">Save</button>
+      </div>
+      <div id="people" class="people"></div>
+    </section>
+
+    <section class="history-section">
+      <div class="section-heading">
+        <div>
+          <h2>Recent</h2>
+          <p id="transactionCount">0 transactions</p>
+        </div>
+        <button id="clearBtn" class="text-btn">Clear all</button>
+      </div>
+      <div id="history" class="history"></div>
+    </section>
+
+    <footer>Data stays on this device.</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
